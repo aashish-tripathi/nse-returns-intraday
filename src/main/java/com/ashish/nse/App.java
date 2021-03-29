@@ -10,9 +10,9 @@ public class App {
             System.out.println("Please provide data input to process position...");
         }
         String stock = "TATASTEEL.NS.csv";
-        double stopLoss = 3.0;
-        long shares = 100;
-        Position position = getPosition(stock, shares, stopLoss, Strategy.LONG);
+        double stopLoss = 2.0;
+        long shares = 200;
+        Position position = getPosition(stock, shares, stopLoss, Strategy.HEDGE);
         position.processPosition();
     }
 
@@ -22,19 +22,19 @@ public class App {
             case HEDGE:
                 position = new Hedging(stock, noOfShares, stopLoss);
                 position.addLongPosition(new Account("Ashish", "007", 100000));
-                position.addShortPosition(new Account("Ashish", "008", 100000));
-                position.longWith(3.0);
-                position.shortWith(3.0);
+                position.addShortPosition(new Account("Vijay", "008", 100000));
+                position.longWith(2.5);
+                position.shortWith(2.5);
                 break;
             case LONG:
                 position = new LongPosition(stock, noOfShares, stopLoss);
                 position.addLongPosition(new Account("Ashish", "007", 100000));
-                position.longWith(3.0);
+                position.longWith(2.0);
                 break;
             case SHORT:
                 position = new ShortPosition(stock, noOfShares, stopLoss);
-                position.addShortPosition(new Account("Ashish", "008", 100000));
-                position.shortWith(3.0);
+                position.addShortPosition(new Account("Vijay", "008", 100000));
+                position.shortWith(2.0);
                 break;
             default:
                 System.out.println("Incorrect position!");

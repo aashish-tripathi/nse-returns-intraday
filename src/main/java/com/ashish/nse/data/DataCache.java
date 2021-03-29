@@ -22,21 +22,20 @@ public class DataCache {
     public void loadDataOf(final String stock, final String inputFilePath) {
         List<TickData> inputList;
         try {
+            System.out.println("Loading data of "+stock);
             File inputF = new File(inputFilePath);
             InputStream inputFS = new FileInputStream(inputF);
             BufferedReader br = new BufferedReader(new InputStreamReader(inputFS));
             inputList = br.lines().skip(1).map(mapToItem).collect(Collectors.toList());
             br.close();
             tickDataMap.put(stock,inputList);
-            System.out.println("Load data of "+stock);
+
         } catch (IOException e) {
             e.printStackTrace();
         }
-
     }
 
     private Function<String, TickData> mapToItem = (line) -> {
-
         String[] dataV = line.split(COMMA);// a CSV has comma separated lines
         TickData item = new TickData(dataV[0], Double.parseDouble(dataV[1]), Double.parseDouble(dataV[2]), Double.parseDouble(dataV[3]), Double.parseDouble(dataV[4]));
         return item;

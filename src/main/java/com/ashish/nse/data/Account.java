@@ -59,11 +59,11 @@ public class Account {
         this.segments = segments;
     }
 
-    public synchronized double getTotalGainsOrLoss() {
+    public double getTotalGainsOrLoss() {
         return totalGainsOrLoss;
     }
 
-    public synchronized void setTotalGainsOrLoss(double totalGainsOrLoss) {
+    public void setTotalGainsOrLoss(double totalGainsOrLoss) {
         this.totalGainsOrLoss = totalGainsOrLoss;
     }
 }
