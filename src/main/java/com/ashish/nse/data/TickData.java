@@ -11,6 +11,9 @@ public class TickData {
     private double low;
     private double close;
 
+    public TickData() {
+    }
+
     public TickData(String date, double open, double high, double low, double close) {
         this.date = date;
         this.open = open;

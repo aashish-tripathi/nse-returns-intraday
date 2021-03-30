@@ -37,7 +37,13 @@ public class DataCache {
 
     private Function<String, TickData> mapToItem = (line) -> {
         String[] dataV = line.split(COMMA);// a CSV has comma separated lines
-        TickData item = new TickData(dataV[0], Double.parseDouble(dataV[1]), Double.parseDouble(dataV[2]), Double.parseDouble(dataV[3]), Double.parseDouble(dataV[4]));
+        TickData item = null;
+        if(!dataV[1].equals("null")) {
+            item = new TickData(dataV[0], Double.parseDouble(dataV[1]), Double.parseDouble(dataV[2]), Double.parseDouble(dataV[3]), Double.parseDouble(dataV[4]));
+        }else{
+            System.out.println(dataV[0]);
+            item = new TickData();
+        }
         return item;
     };
 
